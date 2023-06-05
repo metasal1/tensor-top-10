@@ -7,7 +7,7 @@ export default async function postToDiscord(webhook, data) {
         const fields = data.map((item) => {
             return {
                 name: item.name,
-                value: `${item.sales1h} sales`,
+                value: `${item.sales1h} sales | Floor ${(item.floor / 1000000000).toFixed(2)}`,
             }
         })
 

@@ -1,4 +1,5 @@
 // import data from './logs/tensor.json' assert { type: "json" }
+const LAMPORTS_PER_SOL = 1000000000;
 
 export default async function filter(data) {
 
@@ -11,9 +12,9 @@ export default async function filter(data) {
 
     data.map((item) => {
 
-        list.push({ name: item.document.name, sales1h: item.document['stats.sales1h'] })
+        list.push({ name: item.document.name, sales1h: item.document['stats.sales1h'], floor: item.document['statsOverall.floorPrice'] })
         // get the sales1h
-        console.log(item.document.name, item.document['stats.sales1h'])
+        console.log(item.document.name, item.document['stats.sales1h'], (item.document['statsOverall.floorPrice'] / LAMPORTS_PER_SOL).toFixed(2))
     }
     )
 
